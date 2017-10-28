@@ -21,7 +21,6 @@
             if(selector[0]==='#') selector = selector.slice(1);
             document.getElementById(selector).style.height = '100px';
             grid = document.getElementById(selector);
-            
             return riotGridTiles;
         }
     }
@@ -31,12 +30,8 @@
     }
 
     var riotGridTypes = {
-        flexWrap : {   
-            padding: '0',
-            margin: '0',
-            width: '100%',
-            height: 'auto',
-            overflow: 'hidden',
+        flexWrap : {  
+            margin: '0 auto', 
         },
     };
     var riotGridTileTypes = {
@@ -55,23 +50,32 @@
         cols = newCols ? newCols : cols;
         // three rows with number of cols specified, identified by row and col
         grid.removeAttribute('style');
-        grid.style.boxSizing = 'border-box';
         for (var s in gType) {
             grid.style[s] = (typeof gType[s] === 'string') ? gType[s] : gType[s]();
         }
-        var gridWidth = measure(grid, function(el){return el.offsetWidth;});
+        var gridWidth = grid.clientWidth;
 
         for(var i=0; i<3; i++) {
             for(var j=0; j<cols; j++) {
                 var tile = document.createElement("div");
+                tile.className = 'is-a-tile';
                 tile.style.boxSizing = 'border-box';
                 var size = Math.floor(gridWidth / cols);
-                tile.style.height = size.toString() + 'px';
-                tile.style.width = size.toString() + 'px';                
                 for (var s in tType) {
                     tile.style[s] = (typeof tType[s] === 'string') ? tType[s] : tType[s]();
                     tile.innerHTML = 'block row ' + i + ' col ' + j + ' size ' + size + ' cols ' + cols + ' of ' + gridWidth;
                 }
+                var addMargin = 0;
+                if(tType['margin']) {
+                    addMargin = tType['margin'].match(/\d+/)[0] * 2;
+                } else {
+                    if(tType['marginLeft']) { addMargin = tType['marginLeft'] };
+                    if(tType['marginRight']) { addMargin += tType['marginRight'] };
+                }
+                var verticalMarginSum = tType['margin']
+                tile.style.height = (size-addMargin).toString() + 'px';
+                tile.style.width = (size-addMargin).toString() + 'px';                
+                
                 grid.appendChild(tile);
             }
         }
@@ -86,22 +90,6 @@
         }
         return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
     }
-
-    function measure(el, fn) {
-      var pV = el.style.visibility, 
-          pP = el.style.position;
-          
-      el.style.visibility = 'hidden';
-      el.style.position = 'absolute';
-      
-      document.body.appendChild(el);
-      var result = fn(el);
-      el.parentNode.removeChild(el);
-      
-      el.style.visibility = pV;
-      el.style.position = pP;
-      return result;
-  }
 
     exports.mount = mount;
     exports.test = test;
