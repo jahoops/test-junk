@@ -4,7 +4,6 @@
 	(factory((global.riotGridTiles = {})));
 }(this, (function (exports) { 'use strict';
     var grid = null;
-    var gridWidth = null;
     var cols = 12;
     var tiles = [];
     var resizeHandle = null;
@@ -20,8 +19,9 @@
     function mount$1(selector, className) {
         if(selector) {
             if(selector[0]==='#') selector = selector.slice(1);
+            document.getElementById(selector).style.height = '100px';
             grid = document.getElementById(selector);
-            gridWidth = document.getElementById(selector).offsetWidth;
+            
             return riotGridTiles;
         }
     }
@@ -32,14 +32,17 @@
 
     var riotGridTypes = {
         flexWrap : {   
-            display : 'flex',
-            flexWrap : 'wrap',
-            alignContent: 'flex-start',
+            padding: '0',
+            margin: '0',
+            width: '100%',
+            height: 'auto',
+            overflow: 'hidden',
         },
     };
     var riotGridTileTypes = {
         default : {   
-            border : function(){ '2px solid ' + randomColor(180);},
+            display: 'inline-block',
+            border : function(){ return '2px solid ' + randomColor(180);},
             backgroundColor : 'white',
             borderRadius : '10%',
             margin: '5px',
@@ -47,32 +50,27 @@
     };
     
     function createGrid(gridType, tileType, newCols) {
-        debugger;
         var gType = gridType ? (typeof gridType === 'object' ? gridType : riotGridTypes[gridType]) : riotGridTypes.flexWrap;
         var tType = tileType ? (typeof tileType === 'object' ? tileType : riotGridTileTypes[tileType]) : riotGridTileTypes.default;
         cols = newCols ? newCols : cols;
         // three rows with number of cols specified, identified by row and col
         grid.removeAttribute('style');
-        for (var i = 0; i < gType.length; i++) {
-            grid.style[gType[i].key] = gType[i];
+        grid.style.boxSizing = 'border-box';
+        for (var s in gType) {
+            grid.style[s] = (typeof gType[s] === 'string') ? gType[s] : gType[s]();
         }
+        var gridWidth = measure(grid, function(el){return el.offsetWidth;});
+
         for(var i=0; i<3; i++) {
             for(var j=0; j<cols; j++) {
                 var tile = document.createElement("div");
-                for (var i = 0; i < gType.length; i++) {
-                    tile.style[gType[i].key] = gType[i];
-                }
+                tile.style.boxSizing = 'border-box';
                 var size = Math.floor(gridWidth / cols);
                 tile.style.height = size.toString() + 'px';
-                tile.style.width = size.toString() + 'px';
-                var testedSize = measure(tile, function(el){return el.offsetWidth});
-                var maxtries = 3;
-                while(size !== testedSize && testedSize > 0 && maxtries > 0) {
-                    var newSize = size - (testedSize - size);
-                    tile.style.height = newSize.toString() + 'px';
-                    tile.style.width = newSize.toString() + 'px';
-                    testedSize = measure(tile, function(el){return el.offsetWidth});
-                    maxtries--;
+                tile.style.width = size.toString() + 'px';                
+                for (var s in tType) {
+                    tile.style[s] = (typeof tType[s] === 'string') ? tType[s] : tType[s]();
+                    tile.innerHTML = 'block row ' + i + ' col ' + j + ' size ' + size + ' cols ' + cols + ' of ' + gridWidth;
                 }
                 grid.appendChild(tile);
             }
@@ -90,20 +88,20 @@
     }
 
     function measure(el, fn) {
-        var pV = el.style.visibility, 
-            pP = el.style.position;
-            
-        el.style.visibility = 'hidden';
-        el.style.position = 'absolute';
-        
-        document.body.appendChild(el);
-        var result = fn(el);
-        el.parentNode.removeChild(el);
-        
-        el.style.visibility = pV;
-        el.style.position = pP;
-        return result;
-    }
+      var pV = el.style.visibility, 
+          pP = el.style.position;
+          
+      el.style.visibility = 'hidden';
+      el.style.position = 'absolute';
+      
+      document.body.appendChild(el);
+      var result = fn(el);
+      el.parentNode.removeChild(el);
+      
+      el.style.visibility = pV;
+      el.style.position = pP;
+      return result;
+  }
 
     exports.mount = mount;
     exports.test = test;
