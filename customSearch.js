@@ -90,11 +90,28 @@
     container.appendChild(input);
     container.appendChild(iconBar);
     container.appendChild(list);
-  }
 
-  function filterList(e) {
-    debugger;
-    loadlist(e.target.value).bind(this);
+    var boundKeyup = (function(e) {
+      console.log("e",e);
+     if(e.target.value!==''){ 
+      loadList(e.target.value);
+      return true;
+    } else {
+      return false;
+    }
+    });
+    var boundPaste = (function(e) {
+      var pastedText = undefined;
+      if (window.clipboardData && window.clipboardData.getData) {
+        pastedText = window.clipboardData.getData('Text');
+      } else if (e.clipboardData && e.clipboardData.getData) {
+        pastedText = e.clipboardData.getData('text/plain');
+      }
+      loadList(pastedText);
+      return false;
+    });
+    input.addEventListener("keyup", boundKeyup, false);
+    input.addEventListener("paste", boundPaste, false);
   }
 
   function loadList(filter) {
@@ -106,7 +123,7 @@
     var html = '<ul>';
     if(filter==='') {
       for (var i = 0; i < items.length; i++) {
-        html += '<li>' + items[i].trim() + '</li>';
+        html += '<li tabindex=' + i+1 + '>' + items[i].trim() + '</li>';
       }
     } else {
       for (var i = 0; i < items.length; i++) {
@@ -115,7 +132,25 @@
     }
     html += '</ul>';
     list.innerHTML = html;
-    input.addEventListener("keyup", filterList, false);
+    scrollList();
+  }
+
+  function scrollList() {
+    var first = list.firstChild;
+    var current = null;
+    container.onkeydown = function(e) { 
+      switch (e.keyCode) {
+        case 38: //up
+          if (document.activeElement == (input || first)) { break; }
+          else { if(current){ current = current.previousSibling; current.focus();} }
+          break;
+        case 40: //down
+          if (document.activeElement == input) { if(current){ current = first.firstChild; current.focus(); } }
+          else { if(current){ current = current.nextSibling; current.focus(); } }
+          console.log(typeof current);
+        break;
+      }
+    }
   }
 
   function addStyling(el, styleObj) {
