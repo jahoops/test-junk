@@ -92,16 +92,11 @@
     container.appendChild(list);
 
     var boundKeyup = (function(e) {
-      console.log("e",e);
-     if(e.target.value!==''){ 
-      loadList(e.target.value);
-      return true;
-    } else {
-      return false;
-    }
+      loadList(e.target.value + e.key);
     });
+
     var boundPaste = (function(e) {
-      var pastedText = undefined;
+      var pastedText;
       if (window.clipboardData && window.clipboardData.getData) {
         pastedText = window.clipboardData.getData('Text');
       } else if (e.clipboardData && e.clipboardData.getData) {
@@ -110,6 +105,7 @@
       loadList(pastedText);
       return false;
     });
+
     input.addEventListener("keyup", boundKeyup, false);
     input.addEventListener("paste", boundPaste, false);
   }
@@ -136,20 +132,23 @@
   }
 
   function scrollList() {
-    var first = list.firstChild;
+    var first = list.firstChild.firstChild;
     var current = null;
-    container.onkeydown = function(e) { 
-      switch (e.keyCode) {
-        case 38: //up
+    container.onkeydown = function(e) {  
+      switch (e.key) {
+        case 'ArrowUp':
           if (document.activeElement == (input || first)) { break; }
-          else { if(current){ current = current.previousSibling; current.focus();} }
+          else { if(current){ current = current.previousSibling ? current.previousSibling : current; current.focus();} }
           break;
-        case 40: //down
-          if (document.activeElement == input) { if(current){ current = first.firstChild; current.focus(); } }
-          else { if(current){ current = current.nextSibling; current.focus(); } }
-          console.log(typeof current);
+        case 'ArrowDown':
+          if (document.activeElement == input) { current = first; current.focus(); }
+          else { if(current){ current = current.nextSibling ? current.nextSibling : current; current.focus(); } }
         break;
+        default:
+          return true;
       }
+      e.stopPropagation();
+      e.preventDefault();
     }
   }
 
