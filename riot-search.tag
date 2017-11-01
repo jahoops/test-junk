@@ -10,7 +10,11 @@
 
 	<ul if="{ opts.select.isvisible }">
 		<li each="{ text, i in opts.select.options }" no-reorder onclick="{ parent.select }">
-			{ text }
+			<bold>{ text }</bold>
+			<div><span style="font-size: 10px;">really small type</span><span style="background: red;">red</span></div>
+		</li>
+		<li no-reorder onclick="{ getmore }">
+			<bold><span style="background: red;">GET MORE</span></bold>
 		</li>
 	</ul>
 
@@ -36,14 +40,13 @@
 		}
 
 		this.filterOptions = () => {
-      console.log('filtering');
 			if (opts.select.filter) {
         let newlist = [];
         let f = this.refs.selectfield.value.toLowerCase();
         newlist = data.filter(option => {
             return option.indexOf(f) > -1
         })
-			  opts.select.options = newlist;
+			  opts.select.options = newlist.slice(0, opts.select.options.length);
       }
 		}
 
@@ -157,8 +160,15 @@
 			this.trigger('select', e.item)
 		}
 
+		this.getmore = () => {
+			console.log('getting more', opts.select.options, 'data.length', data.length);
+			opts.select.options = data.slice(0, opts.select.options.length + 10);
+			console.log('got more', opts.select.options,  'options.length', opts.select.options.length);
+			this.update()
+		}
+
 		this.on('mount', () => {
-      opts.select.options = data;
+      opts.select.options = data.slice(0,10);
 			applyFieldText()
 			this.filterOptions()
 			document.addEventListener('click', handleClickOutside)
