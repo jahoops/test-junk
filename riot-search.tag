@@ -46,7 +46,7 @@
         newlist = data.filter(option => {
             return option.indexOf(f) > -1
         })
-			  opts.select.options = newlist.slice(0, opts.select.options.length);
+			  opts.select.options = newlist.slice(0, opts.select.options.length < 10 ? 10 : opts.select.options.length);
       }
 		}
 
