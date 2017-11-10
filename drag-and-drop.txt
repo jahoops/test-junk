@@ -1,0 +1,51 @@
+this.setEvents = function() {
+        var targets = document.querySelectorAll('.target');
+
+function handleDragStart(e) {
+    console.log('starting drag');
+    var dragIcon = document.createElement('img');
+    dragIcon.src = 'images/drew.png';
+    dragIcon.width = 100;
+    e.dataTransfer.setDragImage(dragIcon, -10, -10);
+}
+
+function handleDragOver(e) {
+    console.log('drag over');
+    if (e.preventDefault) {
+        e.preventDefault();
+    }
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+function handleDragEnter(e) {
+    //this.classList.add('dragover');
+}
+
+function handleDragLeave(e) {
+    //this.classList.remove('dragover');
+}
+
+function handleDrop(e) {
+    console.log('drop');
+    if (e.stopPropagation) {
+        e.stopPropagation();
+    }
+    //this.classList.remove('dragover');
+    return false;
+}
+
+var draggables = document.querySelectorAll('.blue');
+[].forEach.call(draggables, function(dragit) {
+    console.log('found one', dragit);
+  dragit.addEventListener('dragstart', handleDragStart, false);
+});
+
+[].forEach.call(targets, function (target) {
+    console.log('target aq');
+    target.addEventListener('dragover', handleDragOver, false);
+    target.addEventListener('dragenter', handleDragEnter, false);
+    target.addEventListener('dragleave', handleDragLeave, false);
+    target.addEventListener('drop', handleDrop, false);
+});
+}
