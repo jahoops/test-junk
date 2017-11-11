@@ -2,52 +2,417 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="dragula.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jwhooper.net: Riot/Bulma</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
 </head>
 
-<body>
+<body class="layout-documentation page-layout">
+  <nav id="navbar" class="navbar is-fixed-top ">
+    <div id="specialShadow" class="bd-special-shadow"></div>
 
-  <div id="gridtiles" class="container"></div>
-  <div id="searchdiv" class="container"></div>
-  <riot-search></riot-search>
+    <div class="container">
 
-  <!-- <script src="riot.js" type="text/javascript"></script> -->
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+        </a>
+
+        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+          <span class="icon" style="color: #333;">
+            <i class="fa fa-lg fa-github"></i>
+          </span>
+        </a>
+
+        <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+          <span class="icon" style="color: #55acee;">
+            <i class="fa fa-lg fa-twitter"></i>
+          </span>
+        </a>
+
+        <div id="navbarBurger" class="navbar-burger burger" data-target="navMenuDocumentation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="navMenuDocumentation" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link  is-active" href="/documentation/overview/start/">
+              Docs
+            </a>
+            <div class="navbar-dropdown ">
+              <a class="navbar-item " href="/documentation/overview/start/">
+                Overview
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/modifiers/syntax/">
+                Modifiers
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/columns/basics/">
+                Columns
+              </a>
+              <a class="navbar-item is-active" href="https://bulma.io/documentation/layout/container/">
+                Layout
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/form/general/">
+                Form
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/elements/box/">
+                Elements
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/components/breadcrumb/">
+                Components
+              </a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                <div>
+                  <p class="is-size-6-desktop">
+                    <strong>0.6.1</strong>
+                  </p>
+
+                  <small>
+                    <a class="bd-view-all-versions" href="https://versions.bulma.io/">View all versions</a>
+                  </small>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link " href="https://bulma.io/blog/">
+              Blog
+            </a>
+            <div id="blogDropdown" class="navbar-dropdown " data-style="width: 18rem;">
+
+              <a class="navbar-item" href="/2017/11/01/fixed-navbar/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">01 Nov 2017</small>
+                  </p>
+                  <p>New feature: fixed navbar</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="/2017/10/22/list-of-buttons/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">22 Oct 2017</small>
+                  </p>
+                  <p>New feature: list of buttons</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="/2017/10/09/roses-are-red-links-are-blue/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">09 Oct 2017</small>
+                  </p>
+                  <p>Roses are red – Links are blue</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="https://bulma.io/blog/">
+                More posts
+              </a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                <div class="navbar-content">
+                  <div class="level is-mobile">
+                    <div class="level-left">
+                      <div class="level-item">
+                        <strong>Stay up to date!</strong>
+                      </div>
+                    </div>
+                    <div class="level-right">
+                      <div class="level-item">
+                        <a class="button bd-is-rss is-small" href="https://bulma.io/atom.xml">
+                          <span class="icon is-small">
+                            <i class="fa fa-rss"></i>
+                          </span>
+                          <span>Subscribe</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link">
+              More
+            </div>
+            <div id="moreDropdown" class="navbar-dropdown ">
+              <a class="navbar-item " href="https://bulma.io/bulma-start/">
+                <p>
+                  <strong>Bulma start</strong>
+                  <br>
+                  <small>A tiny npm package to get started</small>
+                </p>
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item " href="https://bulma.io/made-with-bulma/">
+                <p>
+                  <strong>Made with Bulma</strong>
+                  <br>
+
+                  <body></body>
+                  <small>The official community badge</small>
+                </p>
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item " href="https://bulma.io/extensions/">
+                <p>
+                  <strong>Extensions</strong>
+                  <br>
+                  <small>Side projects to enhance Bulma</small>
+                </p>
+              </a>
+            </div>
+
+            <body></body>
+          </div>
+          <a class="navbar-item " href="https://bulma.io/expo/">
+            <span class="bd-emoji">⭐️</span>
+            Expo
+          </a>
+          <a class="navbar-item " href="https://bulma.io/love/">
+            <span class="bd-emoji">❤️</span>
+            Love
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
+            <span class="icon" style="color: #333;">
+
+              <body></body>
+              <i class="fa fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
+            <span class="icon" style="color: #55acee;">
+              <i class="fa fa-lg fa-twitter"></i>
+            </span>
+          </a>
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io"
+                  target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=https://bulma.io&via=jgthms">
+                  <span class="icon">
+
+                    <body></body>
+                    <i class="fa fa-twitter"></i>
+                  </span>
+                  <span>
+                    Tweet
+                  </span>
+                </a>
+
+              </p>
+              <p class="control">
+                <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.6.1/bulma-0.6.1.zip">
+                  <span class="icon">
+                    <i class="fa fa-download"></i>
+                  </span>
+                  <span>Download</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="section">
+    <div class="container">
+      <riot-toast></riot-toast>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Vertical...</p>
+                <p class="subtitle">Top tile</p>
+              </article>
+              <article class="tile is-child notification is-warning">
+                <p class="title">...tiles</p>
+                <p class="subtitle">Bottom tile</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">Middle tile</p>
+                <p class="subtitle">With an image</p>
+                <figure class="image is-4by3">
+                  <img src="https://bulma.io/images/placeholders/640x480.png">
+                </figure>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+              <p class="title">Wide tile</p>
+              <p class="subtitle">Aligned with the right tile</p>
+              <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
+                  vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-success">
+            <p class="title">Tall tile</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis
+                blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet
+                vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+              <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum,
+                nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas
+                imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim
+                turpis. Sed eget varius ligula, at volutpat tortor.</p>
+              <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat
+                libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta.
+                Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3">
+          <div id="about" class="content">
+            <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Bulma</strong> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="http://jgthms.com" property="cc:attributionName" rel="cc:attributionURL">Jeremy Thomas</a>.
+            <p id="alternative">
+              <a href="https://bulma.io/alternative-to-bootstrap/">An alternative to
+                <strong>Bootstrap</strong>
+              </a>
+            </p>
+            <div class="twitter-container">
+              <a href="https://twitter.com/jgthms" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">@jgthms</a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-5">
+          <div id="share" class="content">
+            <div>
+              <strong>Support</strong> and share the love!
+            </div>
+            <div id="social">
+              <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=jgthms&repo=bulma&type=star&count=true&size=large"
+                allowtransparency="true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="Bulma: a modern CSS framework based on Flexbox"
+                data-url="https://bulma.io" data-count="horizontal" data-via="jgthms" data-related="jgthms:Creator of Bulma"
+                data-size="large">Tweet</a>
+
+              <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="8WMKYSRFN6A78">
+                <input type="image" src="https://bulma.io/images/paypal-donate.png" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."
+                  height="30">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+              </form>
+
+              <div class="fb-like" data-href="https://www.facebook.com/bulmaio" data-layout="button" data-action="like" data-size="large"
+                data-show-faces="false" data-share="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div id="sister">
+            <p>
+              More
+              <strong>helpful</strong> tools:
+            </p>
+            <ul>
+              <li>
+                <a href="http://cssreference.io">
+                  <img src="https://bulma.io/images/css-reference-logo.png" alt="CSS Reference logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://htmlreference.io">
+                  <img src="https://bulma.io/images/html-reference-logo.png" alt="HTML Reference logo">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-3">
+          <p id="tsp">
+            <a href="https://bulma.io/made-with-bulma/">
+              <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+            </a>
+            <small>
+              Get the
+              <a href="https://bulma.io/made-with-bulma/">badge</a>!
+              <br> Source code licensed
+              <a href="https://opensource.org/licenses/mit-license.php">MIT</a>.
+              <br> Website content licensed
+              <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="riot-compiler.js" type="text/javascript"></script>
-  <script src="riot-toast.tag" type="riot/tag">
-  <!-- <script src="riot-search.tag" type="riot/tag"></script> -->
-  <!-- <script src="dragula.js" type="text/javascript"></script>
-    <script src="riot-grid-tiles.js" type="text/javascript"></script> 
-    <script src="customSearch.js" type="text/javascript"></script>-->
-
+  <script src="riot-toast.tag" type="riot/tag"></script>
   <script type="text/javascript">
     (function () {
-      // var tags = riot.mount('riot-search', {
-      //   select: {
-      //     placeholder: 'Please select a card',
-      //     filter: 'text', // <--this enables filtering on the 'text' property 
-      //     options: [],
-      //   }
-      // })
       var tags = riot.mount('*', {
-        notes: [
-          {class:'blue', title:'my blue note', text:'text of my blue note'} 
+        notes: [{
+            class: 'blue',
+            title: 'my first website with Bulma!',
+            text: 'go for it, mofo'
+          },
+          {
+            class: 'green',
+            title: 'have another note, you dope',
+            text: 'yeah, take that, you see!'
+          }
         ]
       });
+      document.addEventListener('DOMContentLoaded', function () {
+        var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach(function ($el) {
+            $el.addEventListener('click', function () {
+              var target = $el.dataset.target;
+              var $target = document.getElementById(target);
+              $el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+            });
+          });
+        }
+      });
     })();
-    // tags[0].on('open', function () { ... })
-    //        .on('close', function () { ... })
-    //        .on('select', function (item) { ... })
-
-    //(function() {
-    //var myselect = riot.mount('riot-select');
-    //var mygrid = riotGridTiles.mount('gridtiles');
-    //mygrid.test();
-    //dragula([document.getElementById('gridtiles')]);
-    //var myCustomSearch = customSearch.mount('searchdiv');
-    //var names = loadNames();
-    //myCustomSearch.pushList(names);
-    //})();
-
   </script>
 </body>
 
