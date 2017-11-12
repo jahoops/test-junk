@@ -7,9 +7,26 @@
   <title>jwhooper.net: Riot/Bulma</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <link rel="stylesheet" href="trivialtoys.css">
 </head>
 
 <body class="layout-documentation page-layout">
+<div id="bigshow" style="position:absolute;width:100%;height:100%;background:black;z-index:9000;">
+    <div id="trans3DDemo">
+        <div id="trans3DBoxes">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+</div>
+
   <nav id="navbar" class="navbar is-fixed-top ">
     <div id="specialShadow" class="bd-special-shadow"></div>
 
@@ -17,7 +34,7 @@
 
       <div class="navbar-brand">
         <a class="navbar-item" href="https://jwhooper.net">
-          <canvas width="112" height="28"></canvas>
+          <canvas id="jwhlogo" width="112" height="28"></canvas>
         </a>
 
         <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
@@ -231,13 +248,6 @@
     </div>
   </nav>
 
-
-  <section class="section">
-    <div class="container">
-      <riot-toast></riot-toast>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
       <div class="tile is-ancestor">
@@ -382,23 +392,30 @@
     </div>
   </footer>
 
-  <script src="riot-compiler.js" type="text/javascript"></script>
-  <script src="riot-toast.tag" type="riot/tag"></script>
+  <!-- <script src="riot-compiler.js" type="text/javascript"></script>
+  <script src="riot-toast.tag" type="riot/tag"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+  <script src="trivialtoys.js" type="text/javascript"></script>
   <script type="text/javascript">
     (function () {
-      var tags = riot.mount('*', {
-        notes: [{
-            class: 'blue',
-            title: 'my first website with Bulma!',
-            text: 'go for it, mofo'
-          },
-          {
-            class: 'green',
-            title: 'have another note, you dope',
-            text: 'yeah, take that, you see!'
-          }
-        ]
-      });
+      // var tags = riot.mount('*', {
+      //   notes: [{
+      //       class: 'blue',
+      //       title: 'my first website with Bulma!',
+      //       text: 'go for it, mofo'
+      //     },
+      //     {
+      //       class: 'green',
+      //       title: 'have another note, you dope',
+      //       text: 'yeah, take that, you see!'
+      //     }
+      //   ]
+      // });
+      
+      runAnimation();
+      threeDTimeline.play(); 
+
       document.addEventListener('DOMContentLoaded', function () {
         var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
         if ($navbarBurgers.length > 0) {
