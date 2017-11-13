@@ -1,13 +1,13 @@
 <riot-toast ref="toaster">
 <ul class="riot-toast-ul">
-    <li class="riot-toast-li riot-toast-{ note.class }" each="{ note, i in opts.notes }" no-reorder >
+    <li ref="li" class="riot-toast-li riot-toast-{ note.class }" each="{ note, i in opts.notes }" no-reorder >
         <div class="riot-toast-dismiss" onclick="{ dismiss }">X</div>
-        <p class="riot-toast-title">{ note.title }</p>
-        <p class="riot-toast-text">{ note.text }</p>
+        <div class="riot-toast-title">{ note.title }</div>
+        <div class="riot-toast-text">{ note.text }</div>
         <a class="riot-toast-link" if="{ note.link }" href="{ note.link }">{ note.linktext }</a>
     </li>
 </ul>
-
+    
     <script>
 
     "use strict";
@@ -16,6 +16,25 @@
     };
 
     this.on('mount', function () {
+        if(opts.position) {
+            if(opts.position.element) {
+                var xoffset, yoffset;
+                if(opts.position.offset) {
+                    xoffset = opts.position.offset.x ? opts.position.offset.x : 0;
+                    yoffset = opts.position.offset.y ? opts.position.offset.y : 0;
+                }
+                var pos = getPosition(document.querySelector(opts.position.element));
+                switch(opts.position.at) {
+                    case 'left':
+                    default:
+                    this.root.style.position = 'absolute';
+                    this.root.style.top = pos.y + 'px';
+                    var positionInfo = this.refs.li.getBoundingClientRect();
+                    this.root.style.left = (pos.x - positionInfo.width + xoffset) + 'px';
+                    this.root.style.top = (pos.y + yoffset) + 'px';
+                }
+            }
+        }
     });
 
     this.on('update', function () {
@@ -53,9 +72,13 @@
         font-size: 1.0em;
     }
     .riot-toast-ul {
+        list-style: none;
     }
     .riot-toast-li {
-        position: relative;
+        width: 200px;
+        position: absolute;
+        left:0;
+        top: 0;
         padding: 3px 12px 3px 6px;
         margin: 1px;
         text-align: left;

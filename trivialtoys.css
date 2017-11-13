@@ -1,18 +1,57 @@
-img {margin:10px;}
-#trans3DDemo {
-	position:absolute;
-	top:70px;
-	left:240px;
-  width:240px;
+#Logo {
+  position: absolute;
+  height: 83px;
+  width: 406px;
+  border-radius: 5px;
+  background: black;
+  height: 45px;
+  fill: #aa7f3d;
+  fill: url("./#mygradient");
+  stroke: #EEBE7B;
+  stroke-miterlimit: 5;
+}
+#LogoDefs {
+  display: none;
+}
+.AnimateDraw {
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: DrawLine, FadeStroke, FillIn;
+  animation-duration: 4s, 1s, 1s;
+  animation-delay: 0s, 3.5s, 3.5s;
 }
 
-#trans3DBoxes div {
-	position:relative;
-	width:60px;
-	height:60px;
-	background-color:#f60;
-	margin-right:10px;
-	margin-bottom:10px;
-	border:solid 2px #FFF;
-	display:inline-block;
+#DrawMark {
+  stroke-dashArray: 1100;
+  stroke-dashoffset: 1100; 
+}
+
+#DrawFrame { 
+  animation-delay: 1s, 3.5s, 3.5s;
+  animation-duration: 3.5s, 1s, 1s; 
+  stroke-dashArray: 1500;
+  stroke-dashoffset: 1500;
+}
+
+#DrawText { 
+  animation-delay: 2s, 3.5s, 3.5s; 
+  animation-duration: 2s, 1s, 1s; 
+  stroke-dashArray: 300;
+  stroke-dashoffset: 300;
+  animation-duration: 5s;
+}
+
+@keyframes DrawLine {
+  to { stroke-dashOffset: 0; }
+}
+
+@keyframes FadeStroke {
+  to { stroke-opacity: 0; }
+}
+
+@keyframes FillIn {
+  from { fill-opacity: 0; }
+  to { fill-opacity: 1; }
 }
