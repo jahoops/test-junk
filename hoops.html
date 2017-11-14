@@ -12,11 +12,8 @@
   <script data-src="hopper.tag" type="hoops/tag"></script>
   <script type="text/javascript">
     (function () {
-      var stuff = getScript("hopper.tag", function(data) {
-        console.log(data);
-        console.log('returned');
-      });
-      console.log(stuff, 'is probably empty');
+      console.log('pre mount');
+      hoops.mount('hopper');
     })();
  
 function getScript(url, callback) {

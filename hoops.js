@@ -1,10 +1,11 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.customSearch = {})));
+    (factory((global.hoops = {})));
 }(this, (function (exports) {
   'use strict';
   var container = null;
+  var tags = [];
   var input = null;
   var iconBar = null;
   var list = null;
@@ -17,20 +18,26 @@
     pushList: pushList$1,
   });
 
-  function mount$1(selector, className) {
+  function mount$1(selector) {
     if (selector) {
-      if (selector[0] === '#') selector = selector.slice(1);
-      container = document.getElementById(selector);
-      if (container) {
-        constructSearch();
-      }
-      return customSearch;
+      container = document.querySelector(selector);
+      tags = document.querySelectorAll('script[data-src^="' + selector + '"]');
+      fetch(tags[0].dataset.src).then(function(response){
+        return response.text().then(function(data) {
+          container.innerHTML = data;
+        })
+      })
+
+      //if (container) {
+      //  constructSearch();
+      //}
+      return hoops;
     }
   }
 
   function pushList$1(newList) {
     items = newList;
-    container ? loadList() : console.error("no search mounted, customSearch.mount('elementName')");
+    container ? loadList() : console.error("no search mounted, hoops.mount('elementName')");
   }
 
   var containerStyle = {
