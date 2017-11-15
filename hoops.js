@@ -24,7 +24,11 @@
       tags = document.querySelectorAll('script[data-src^="' + selector + '"]');
       fetch(tags[0].dataset.src).then(function(response){
         return response.text().then(function(data) {
-          container.innerHTML = data;
+          var sections = data.split('<script>');
+          container.innerHTML = sections[0];
+          var myscript = sections[1].slice(0,-9);
+          console.log(myscript);
+          myscript();
         })
       })
 
