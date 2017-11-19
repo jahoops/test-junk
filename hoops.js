@@ -20,15 +20,15 @@
 
   function mount$1(selector) {
     if (selector) {
-      container = document.querySelector(selector);
       tags = document.querySelectorAll('script[data-src^="' + selector + '"]');
       fetch(tags[0].dataset.src).then(function(response){
         return response.text().then(function(data) {
-          var sections = data.split('<script>');
-          container.innerHTML = sections[0];
-          var myscript = sections[1].slice(0,-9);
-          console.log(myscript);
-          myscript();
+          var frag = document.createRange().createContextualFragment(data);
+          var firstChild = frag.firstChild;
+          console.log(firstChild);
+          var myscript = firstChild.querySelector('script');
+          document.querySelector(selector).appendChild(firstChild);
+          //loadScript(myscript);
         })
       })
 
@@ -37,6 +37,26 @@
       //}
       return hoops;
     }
+  }
+  function pushList$1(newList) {
+    items = newList;
+    container ? loadList() : console.error("no search mounted, hoops.mount('elementName')");
+  }
+
+  function loadScript(myscript) {
+    // Check for existing script element and delete it if it exists
+    var js = document.getElementById("sandboxScript");
+
+    if(js !== null) {
+        document.body.removeChild(js);
+        console.info("---------- Script refreshed ----------");
+    }
+    // Create new script element and load a script into it
+    js = document.createElement("script");
+    //js.src = location;
+    js.id = "sandboxScript";
+    js.innerText = myscript.innerText;
+    document.body.appendChild(js);
   }
 
   function pushList$1(newList) {
