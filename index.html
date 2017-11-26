@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .cl {
+      position: absolute;
+      height: 8px;
+      width: 8px;
+      margin: 1px;
+      border: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="images" class="container" style="position:absolute; height: 600px; width: 1000px; top:20px; left: 50px;background: black"></div>
+
+
+  <script type="text/javascript">
+    (function () {
+      var h = 600;
+      var w = 1000;
+      var s = '';
+      for(var i=0; i<h; i+=10){
+        for(var j=0; j<w; j+=10){
+          //s += '<div class="cl" style="top:' + i + 'px; left:' + j + 'px;"></div>';
+          s += '<svg class="cl" style="top:' + i + 'px; left:' + j + 'px;"><ellipse cx="0" cy="0" rx="4" ry="3"/></svg>';
+        }
+      }
+      document.querySelector('#images').innerHTML = s;
+      setInterval(function() {
+        var t0 = performance.now();
+        var lights = document.querySelectorAll('.cl');
+        for(var i=0; i<lights.length; i++){
+          //lights[i].style.background = randomColor(200);
+          lights[i].style.fill = randomColor(200);
+        }
+        var t1 = performance.now();
+        console.log("divs took " + (t1 - t0) + " milliseconds");
+      },500);
+    })();
+    function getRandom(max, min){
+      return Math.floor(Math.random() * (1 + max - min) + min);
+    }	
+    function randomColor(brightness){
+        function randomChannel(brightness){
+          var r = 255-brightness;
+          var n = 0|((Math.random() * r) + brightness);
+          var s = n.toString(16);
+          return (s.length==1) ? '0'+s : s;
+        }
+        return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
+    }
+  </script>
+</body>
+
+</html>

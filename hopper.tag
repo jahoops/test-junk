@@ -10,12 +10,16 @@ hopper.big {
 </style>
 
 
-<span>The world is an illusion, and so am I. Hello.</span>
+<span onclick="changeme(this)">The world is an illusion, and so am I. Hello.</span>
 
 
 <script>
-  document.querySelector('hopper').innerHTML='I\'m a <strong>mushroom</strong> cloud layin\' motherfucker, motherfucker!';
-  document.querySelector('hopper').style.backgroundColor='pink';
+function changeme(e) {
+  document.querySelector('hopper span').innerHTML='Something to replace something, somewhere ...';
+  document.querySelector('hopper span').style.backgroundColor='pink';
+  console.log(e);
+  e.innerHTML='using e works too';
+}
 </script>
 
 </hopper>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap@next/dist/css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+</head>
+
+<body class="layout-documentation page-layout">
+  <nav id="navbar" class="navbar is-fixed-top ">
+    <div id="specialShadow" class="bd-special-shadow"></div>
+
+    <div class="container">
+
+      <div class="navbar-brand">
+          <a href="http://jwhooper.net" target="_blank">
+
+            <svg id="LogoDefs" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <defs>
+                <linearGradient id="mygradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="5%"  stop-color="#F7D696"/>
+                  <stop offset="50%" stop-color="#EEBE7B" />
+                  <stop offset="95%" stop-color="#CEA058"/>
+                </linearGradient>
+                <g id="LogoText">
+                <path
+                   d="m 17.617187,73.984337 0.03906,-21.4453 0.820312,-17.5 5.3125,5.8594 0,41.5625 L 6.6015625,74.882837 0,69.609337 l 17.617187,4.375 z m 10.742188,-49.80467 q 0,2.65625 -1.796875,5 -1.796875,2.34377 -4.804688,2.34377 -3.398437,0 -5.195312,-2.14845 -1.796875,-2.1875 -1.796875,-5.19532 0,-3.00781 1.796875,-5.23437 1.796875,-2.26563 5.195312,-2.26563 3.007813,0 4.804688,2.1875 1.796875,2.14844 1.796875,5.3125 z m -4.101563,0 q 0,-1.52343 -0.859375,-2.53906 -0.859375,-1.05469 -2.265625,-1.05469 -1.601562,0 -2.460937,1.09375 -0.859375,1.05469 -0.859375,2.5 0,1.40625 0.859375,2.46094 0.859375,1.01563 2.460937,1.01563 1.40625,0 2.265625,-1.09375 0.859375,-1.13282 0.859375,-2.38282 z"
+                   id="path3748"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 87.5,58.554637 -8.242188,-3.125 -0.46875,-17.9687 -3.203125,-2.3438 -0.898437,18.3594 q -8.242188,5.8594 -14.21875,0 L 60,37.851537 l -3.632813,-3.125 -1.40625,19.9219 4.140625,3.125 -5.039062,-3.9063 q -8.242188,5.8594 -14.179688,0 l -0.46875,-15.625 -3.671875,-3.125 0,22.6563 q 10.976563,8.203101 23.59375,0.585901 8.007813,7.226599 20.390625,-0.976501 l 9.140625,6.25 L 87.5,58.554637 Z"
+                   id="path3750"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 87.773437,8.0077975 7.304688,0.11719 0.117187,54.7265505 5.703128,0.5469 0,-19.4141 8.32031,0.8985 1.01563,18.0468 6.09375,-0.7422 0.19531,-18.2031 -3.32031,-8.4375 -12.34375,-0.3906 0.27343,-27.0703205 7.92969,0.70313 -5.54687,-8.39844 -20.898443,-0.39062 5.15625,8.00781 z"
+                   id="path3752"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 146.60156,51.367137 q 1.99219,-3.4375 0.89844,-6.054699 -1.05469,-2.617101 -5.15625,-3.125 -4.60938,-0.625 -8.47656,1.4844 -3.86719,2.0703 -5.74219,5.3125 -1.91406,3.242199 -0.82031,5.8594 1.09375,2.617199 5.70312,3.2031 4.10156,0.5469 8.00781,-1.6406 3.90625,-2.2266 5.58594,-5.0391 z m 3.63281,0.6641 q -2.38281,4.3359 -8.00781,7.7344 -5.58594,3.3593 -11.48437,2.539 -6.60156,-0.8984 -8.16406,-4.9218 -1.52344,-4.023499 1.21093,-8.9844 2.69532,-4.9219 8.24219,-8.125 5.54687,-3.242199 12.14844,-2.3438 5.85937,0.820301 7.38281,4.8438 1.5625,4.023401 -1.32813,9.257801 z"
+                   id="path3754"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 182.22656,51.367137 q 1.99219,-3.4375 0.89844,-6.054699 -1.05469,-2.617101 -5.15625,-3.125 -4.60938,-0.625 -8.47656,1.4844 -3.86719,2.0703 -5.74219,5.3125 -1.91406,3.242199 -0.82031,5.8594 1.09375,2.617199 5.70312,3.2031 4.10156,0.5469 8.00781,-1.6406 3.90625,-2.2266 5.58594,-5.0391 z m 3.63281,0.6641 q -2.38281,4.3359 -8.00781,7.7344 -5.58594,3.3593 -11.48437,2.539 -6.60157,-0.8984 -8.16407,-4.9218 -1.52343,-4.023499 1.21094,-8.9844 2.69531,-4.9219 8.24219,-8.125 5.54687,-3.242199 12.14844,-2.3438 5.85937,0.820301 7.38281,4.8438 1.5625,4.023401 -1.32813,9.257801 z"
+                   id="path3756"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 207.03125,36.015637 16.99219,9.5703 2.34375,8.9844 -3.51563,6.6406 -10.54687,1.9531 -10.15625,-7.4219 0,22.6563 -4.29688,-5.0781 0,-47.26567 4.29688,5.85937 0,18.75 9.375,8.2031 8.20312,-1.9531 0.78125,-8.9844 -17.57812,-8.789 4.10156,-3.125 z"
+                   id="path3758"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 241.875,53.789037 24.53125,-14.2187 -21.95313,-6.445399 -11.17187,9.882899 -0.85938,7.773401 11.17188,10.742199 9.92187,0.8594 11.60157,-8.5938 -5.58594,-3.0078 -7.73438,7.3047 -7.34375,-0.429699 -7.30468,-7.3047 0.85937,-5.625 6.44531,-4.2969 10.78125,0.4297 -17.22656,9.0625 3.86719,3.867199 z"
+                   id="path3760"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 293.55469,47.226537 q 0,1.25 -0.85938,2.382801 -0.85937,1.0938 -2.26562,1.0938 -1.60157,0 -2.46094,-1.0157 -0.85938,-1.054601 -0.85938,-2.460901 0,-1.4453 0.85938,-2.5 0.85937,-1.0937 2.46094,-1.0937 1.40625,0 2.26562,1.054601 0.85938,1.0157 0.85938,2.539099 z m -21.13282,-5.5859 0.0391,10.5468 0.0391,10.5079 5.78125,0 -0.3125,-17.1875 q 9.17969,-6.1719 6.99219,-1.5625 -1.99219,4.8046 -0.0391,7.4218 1.95313,2.5782 5,2.5782 2.73438,0 4.72657,-1.9532 2.03125,-1.9531 1.71875,-4.6875 0,-2.8515 -1.875,-4.8047 -1.83594,-1.9531 -6.32813,-4.0625 -4.49219,-2.1093 -10.85937,2.8907 l 0.39062,-3.711 -5.39062,-2.8515 0.11718,6.875 z"
+                   id="path3762"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 308.90625,59.101537 q 0,1.3672 -0.89844,2.5391 -0.89844,1.1718 -2.38281,1.1718 -1.71875,0 -2.61719,-1.0546 -0.89844,-1.0938 -0.89844,-2.6563 0,-1.4844 0.89844,-2.6172 0.89844,-1.1328 2.61719,-1.1328 1.48437,0 2.38281,1.0938 0.89844,1.0546 0.89844,2.6562 z"
+                   id="path3764"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 316.32812,42.070337 6.67969,-0.7813 0,18.3594 3.55469,1.9531 0.89844,-18.3594 q 8.04687,-5.8593 13.82812,0 l 0.46875,15.625 3.55469,3.125 0,-22.6562 q -10.70313,-8.2031 -22.73438,0 l -7.14843,-0.3906 0.89843,3.125 z"
+                   id="path3766"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 355.3125,53.789037 24.53125,-14.2187 -21.95313,-6.445399 -11.17187,9.882899 -0.85938,7.773401 11.17188,10.742199 9.92187,0.8594 11.60157,-8.5938 -5.58594,-3.0078 -7.73438,7.3047 -7.34375,-0.429699 -7.30468,-7.3047 0.85937,-5.625 6.44531,-4.2969 10.78125,0.4297 -17.22656,9.0625 3.86719,3.867199 z"
+                   id="path3768"
+                   inkscape:connector-curvature="0" />
+                <path
+                   d="m 385,2.4218575 0,58.7890795 5.27344,4.2969 12.89062,-8.5938 -3.125,-1.1719 -9.96094,3.125 0.19532,-39.45309 15.23437,0 -2.53906,-3.90625 -11.91406,0 0,-8.5937495 -4.6875,-3.90625 L 385,2.4218575 Z"
+                   id="path3770"
+                   inkscape:connector-curvature="0" />
+                </g>
+              </defs>
+            </svg>
+            <svg id="Logo" class="AnimatePath" viewBox="0 0 405.5078 82.460935" >
+              <use id="DrawText" class="AnimateDraw" xlink:href="#LogoText" />
+            </svg>
+          </a> 
+      </div>
+        <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+          <span class="icon" style="color: #333;">
+            <i class="fa fa-lg fa-github"></i>
+          </span>
+        </a>
+
+        <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+          <span class="icon" style="color: #55acee;">
+            <i class="fa fa-lg fa-twitter"></i>
+          </span>
+        </a>
+
+        <div id="navbarBurger" class="navbar-burger burger" data-target="navMenuDocumentation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <div id="navMenuDocumentation" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link  is-active" href="/documentation/overview/start/">
+              Docs
+            </a>
+            <div class="navbar-dropdown ">
+              <a class="navbar-item " href="/documentation/overview/start/">
+                Overview
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/modifiers/syntax/">
+                Modifiers
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/columns/basics/">
+                Columns
+              </a>
+              <a class="navbar-item is-active" href="https://bulma.io/documentation/layout/container/">
+                Layout
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/form/general/">
+                Form
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/elements/box/">
+                Elements
+              </a>
+              <a class="navbar-item " href="https://bulma.io/documentation/components/breadcrumb/">
+                Components
+              </a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                <div>
+                  <p class="is-size-6-desktop">
+                    <strong>0.6.1</strong>
+                  </p>
+
+                  <small>
+                    <a class="bd-view-all-versions" href="https://versions.bulma.io/">View all versions</a>
+                  </small>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link " href="https://bulma.io/blog/">
+              Blog
+            </a>
+            <div id="blogDropdown" class="navbar-dropdown " data-style="width: 18rem;">
+
+              <a class="navbar-item" href="/2017/11/01/fixed-navbar/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">01 Nov 2017</small>
+                  </p>
+                  <p>New feature: fixed navbar</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="/2017/10/22/list-of-buttons/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">22 Oct 2017</small>
+                  </p>
+                  <p>New feature: list of buttons</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="/2017/10/09/roses-are-red-links-are-blue/">
+                <div class="navbar-content">
+                  <p>
+                    <small class="has-text-link">09 Oct 2017</small>
+                  </p>
+                  <p>Roses are red – Links are blue</p>
+                </div>
+              </a>
+
+              <a class="navbar-item" href="https://bulma.io/blog/">
+                More posts
+              </a>
+              <hr class="navbar-divider">
+              <div class="navbar-item">
+                <div class="navbar-content">
+                  <div class="level is-mobile">
+                    <div class="level-left">
+                      <div class="level-item">
+                        <strong>Stay up to date!</strong>
+                      </div>
+                    </div>
+                    <div class="level-right">
+                      <div class="level-item">
+                        <a class="button bd-is-rss is-small" href="https://bulma.io/atom.xml">
+                          <span class="icon is-small">
+                            <i class="fa fa-rss"></i>
+                          </span>
+                          <span>Subscribe</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link">
+              More
+            </div>
+            <div id="moreDropdown" class="navbar-dropdown ">
+              <a class="navbar-item " href="https://bulma.io/bulma-start/">
+                <p>
+                  <strong>Bulma start</strong>
+                  <br>
+                  <small>A tiny npm package to get started</small>
+                </p>
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item " href="https://bulma.io/made-with-bulma/">
+                <p>
+                  <strong>Made with Bulma</strong>
+                  <br>
+
+                  <body></body>
+                  <small>The official community badge</small>
+                </p>
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item " href="https://bulma.io/extensions/">
+                <p>
+                  <strong>Extensions</strong>
+                  <br>
+                  <small>Side projects to enhance Bulma</small>
+                </p>
+              </a>
+            </div>
+
+            <body></body>
+          </div>
+          <a class="navbar-item " href="https://bulma.io/expo/">
+            <span class="bd-emoji">⭐️</span>
+            Expo
+          </a>
+          <a class="navbar-item " href="https://bulma.io/love/">
+            <span class="bd-emoji">❤️</span>
+            Love
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <a class="navbar-item is-hidden-desktop-only" href="https://github.com/jgthms/bulma" target="_blank">
+            <span class="icon" style="color: #333;">
+
+              <body></body>
+              <i class="fa fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com/jgthms" target="_blank">
+            <span class="icon" style="color: #55acee;">
+              <i class="fa fa-lg fa-twitter"></i>
+            </span>
+          </a>
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io"
+                  target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&hashtags=bulmaio&url=https://bulma.io&via=jgthms">
+                  <span class="icon">
+
+                    <body></body>
+                    <i class="fa fa-twitter"></i>
+                  </span>
+                  <span>
+                    Tweet
+                  </span>
+                </a>
+
+              </p>
+              <p class="control">
+                <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.6.1/bulma-0.6.1.zip">
+                  <span class="icon">
+                    <i class="fa fa-download"></i>
+                  </span>
+                  <span>Download</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Vertical...</p>
+                <p class="subtitle">Top tile</p>
+              </article>
+              <article class="tile is-child notification is-warning">
+                <p class="title">...tiles</p>
+                <p class="subtitle">Bottom tile</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">Middle tile</p>
+                <p class="subtitle">With an image</p>
+                <figure class="image is-4by3">
+                  <img src="https://bulma.io/images/placeholders/640x480.png">
+                </figure>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+              <p class="title">Wide tile</p>
+              <p class="subtitle">Aligned with the right tile</p>
+              <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
+                  vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-success">
+            <p class="title">Tall tile</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis
+                blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet
+                vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+              <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum,
+                nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas
+                imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim
+                turpis. Sed eget varius ligula, at volutpat tortor.</p>
+              <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat
+                libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta.
+                Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3">
+          <div id="about" class="content">
+            <strong xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Bulma</strong> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="http://jgthms.com" property="cc:attributionName" rel="cc:attributionURL">Jeremy Thomas</a>.
+            <p id="alternative">
+              <a href="https://bulma.io/alternative-to-bootstrap/">An alternative to
+                <strong>Bootstrap</strong>
+              </a>
+            </p>
+            <div class="twitter-container">
+              <a href="https://twitter.com/jgthms" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">@jgthms</a>
+            </div>
+          </div>
+        </div>
+        <div class="column is-5">
+          <div id="share" class="content">
+            <div>
+              <strong>Support</strong> and share the love!
+            </div>
+            <div id="social">
+              <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=jgthms&repo=bulma&type=star&count=true&size=large"
+                allowtransparency="true" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="Bulma: a modern CSS framework based on Flexbox"
+                data-url="https://bulma.io" data-count="horizontal" data-via="jgthms" data-related="jgthms:Creator of Bulma"
+                data-size="large">Tweet</a>
+
+              <form class="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="8WMKYSRFN6A78">
+                <input type="image" src="https://bulma.io/images/paypal-donate.png" border="0" name="submit" alt="PayPal – The safer, easier way to pay online."
+                  height="30">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+              </form>
+
+              <div class="fb-like" data-href="https://www.facebook.com/bulmaio" data-layout="button" data-action="like" data-size="large"
+                data-show-faces="false" data-share="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div id="sister">
+            <p>
+              More
+              <strong>helpful</strong> tools:
+            </p>
+            <ul>
+              <li>
+                <a href="http://cssreference.io">
+                  <img src="https://bulma.io/images/css-reference-logo.png" alt="CSS Reference logo">
+                </a>
+              </li>
+              <li>
+                <a href="http://htmlreference.io">
+                  <img src="https://bulma.io/images/html-reference-logo.png" alt="HTML Reference logo">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-3">
+          <p id="tsp">
+            <a href="https://bulma.io/made-with-bulma/">
+              <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+            </a>
+            <small>
+              Get the
+              <a href="https://bulma.io/made-with-bulma/">badge</a>!
+              <br> Source code licensed
+              <a href="https://opensource.org/licenses/mit-license.php">MIT</a>.
+              <br> Website content licensed
+              <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+  <!-- Add this after vue.js -->
+  <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+  <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <script type="text/javascript">
+    (function () {
+    })();
+  </script>
+</body>
+
+</html>
