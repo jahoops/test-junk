@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All SVG icons</title>
+    <style>
+        .sizesvg {
+            height: 20px;
+            width: 20px;
+            color: black;
+        }
+        .svgspan {
+            display: inline-block;
+            width: 145px;
+        }
+        .svgspan div {
+            margin-left: 5px;
+            font-size: 10px;
+            color: gray;
+            display: inline-block;
+        }
+    </style>
+    <script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/spin.js" type="text/javascript"></script>
+    <script src="../../assets/js/svg4everybody.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+    <div id='svgTable'>
+        <div>Click on a collection to view:</div>
+        <div id="collections"></div>
+        <div>
+            <span>Here is the code to include, use CSS to size, color, etc. :
+                <input id="showcode" type="text" style="width:600px"/>
+            </span>
+        </div>
+        <div id="showSVG"></div>
+    </div>
+    <script type="text/javascript">
+        svg4everybody();
+        var collections = ['brandico','elusive-icons','entypo','font-awesome','fontelico','foundation-icons','glyphicons-halflings',
+        'icomoon-free','icons8-color-icons','icons8-line-awesome','icons8-win10','icons8-wpf','ionicons','ligaturesymbols',
+        'linecons','maki-12','maki-18','maki-24','material-icons','meteocons','metrize-icons','mfglabs-iconset','octicons','open-iconic','openwebicons',
+        'raphael-icons','simple-line-icons','stateface','stroke7','typicons','weather-icons','webhostinghub-glyphs','zocial'];
+        $(function () {
+            var collectionlist = '';
+            $.each(collections, function(index,value){
+                collectionlist += '<button class="svgbutton" id="' + value + '">' + value + '</button>';
+            });
+            $('#collections').html(collectionlist);
+            latebind();
+            $('.svgbutton').css('cursor', 'pointer');
+
+            function latebind() {
+                $('.svgbutton').on('click', function () {
+                    var opts = {
+                                    lines: 13 // The number of lines to draw
+                                    , length: 28 // The length of each line
+                                    , width: 14 // The line thickness
+                                    , radius: 42 // The radius of the inner circle
+                                    , scale: 1 // Scales overall size of the spinner
+                                    , corners: 1 // Corner roundness (0..1)
+                                    , color: '#000' // #rgb or #rrggbb or array of colors
+                                    , opacity: 0.25 // Opacity of the lines
+                                    , rotate: 0 // The rotation offset
+                                    , direction: 1 // 1: clockwise, -1: counterclockwise
+                                    , speed: 1 // Rounds per second
+                                    , trail: 60 // Afterglow percentage
+                                    , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+                                    , zIndex: 2e9 // The z-index (defaults to 2000000000)
+                                    , className: 'spinner' // The CSS class to assign to the spinner
+                                    , top: '50%' // Top position relative to parent
+                                    , left: '50%' // Left position relative to parent
+                                    , shadow: false // Whether to render a shadow
+                                    , hwaccel: false // Whether to use hardware acceleration
+                                    , position: 'absolute' // Element positioning
+                                };
+                    $('#showSVG').html();
+                    var target = document.getElementById('showSVG');
+                    var spinner = new Spinner(opts).spin(target);
+                    var thisSVG = $(this).attr('id');
+                    thisSVG = "/hd/assets/svg/" + thisSVG + "/"  + thisSVG + ".svg";
+                    console.log(thisSVG);
+                    $.get(thisSVG, function(data) {
+                        var els = ($(data).find('symbol'));
+                        var newHTML = '';
+                        els.each( function() {
+                            newHTML+="<span col='" + thisSVG + "' sym='" + this.id + "' class='svgspan'><svg class='sizesvg'><use xlink:href=" + thisSVG + "#" + this.id + "></use></svg><div>" + this.id + "</div></span>";
+                        });
+                        $('#showSVG').html(newHTML);
+                        spinner.stop();
+                        $('.svgspan').on('click', function () {
+                            var sym = $(this).attr('sym');
+                            var col = $(this).attr('col');
+                            $('#showcode').val('<svg><use xlink:href=' + col + '##' + sym +'></use></svg>');
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

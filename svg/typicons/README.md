@@ -1,0 +1,1 @@
+This excellent icon font was taken from [Typicons](http://www.typicons.com/). Feel free to use it in your projects under the [SIL Open Font License 1.1 (OFL)](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
